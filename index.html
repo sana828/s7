@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta required name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta required name="description" content="" />
+        <meta required name="author" content="" />
+        <title>Neuro Detect</title>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"></link> -->
+        <!-- Favicon-->
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="http://127.0.0.1:5000/static/css/styles.css" rel="stylesheet" />
+        <style>
+           #form1{
+                display: none;
+                width: 100%;
+                margin: auto;
+                /* border: 1px solid #ddd; */
+                padding: 25px;
+           }
+           #form2, #form3, #form4, #form5, #form6{
+                display: none;
+                width: 50%;
+                margin: auto;
+                /* border: 1px solid #ddd; */
+                padding: 25px;
+                background-color: rgba(0, 0, 0, 0.70);
+                text-align: left;
+
+            }
+            h3{
+              text-align: center !important;
+              text-transform: uppercase;
+            }
+             a{
+              color: #ffc800 !important;
+            }
+             a:hover{
+              cursor: pointer;
+            }
+            #form1.active, #form2.active, #form3.active, #form4.active, #form5.active, #form6.active{
+                    display: block;
+            }
+            body{
+                background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-gC7hs8E-l6BvhIfjs9uc848XMU4snkGyXA&usqp=CAU");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100vh;
+            }
+            footer{
+              display: flex;
+              justify-content: center;
+              background-color: #343a40;
+              padding: 25px;
+              color: #ffc800;
+            }
+            footer img{
+              width: 40px;
+              border-radius: 50%;
+            }
+
+            #bttn{
+              padding: 25px;
+              background: transparent;
+              border: 1px solid #ffc800;
+              color: #ffc800 !important;
+              width: 150px;
+              border-radius: 25px;
+            }
+        </style>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <!-- <li class="nav-item"><a class="nav-link" href="#page-top">AUTISM</a></li> -->
+                <a class="navbar-brand h1" href="/">Neuro Detect</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                      <li><a data-value="#form1" onclick="toggleform(event)" class="nav-link">Home</a></li>
+                        <li><a data-value="#form2" onclick="toggleform(event)" class="nav-link">Doctor</a></li>
+                        <li><a data-value="#form4" onclick="toggleform(event)" class="nav-link">patient</a></li>
+                        <li><a data-value="#form6" onclick="toggleform(event)" class="nav-link">Admin</a></li>
+                        <li><a data-value="#form4" onclick="toggleform(event)" class="nav-link">feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+          
+        <!-- Masthead-->
+       
+        <header class="masthead">
+            <div class="container">
+              {% if msg %}
+        <div class="container">
+            <div class="alert alert-success alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>{{msg}}</strong> 
+            </div>
+          </div>
+          {% endif %}
+          <div id="form1" class="active">
+            <br><br><br><br><br>
+            <center>
+              <h1 style="color: #ffc800;font-size: 60px;">Neuro Detect</h1>
+              <br><br>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque dignissimos ipsam dicta neque nihil cumque repudiandae distinctio qui quidem eligendi exercitationem aliquam sequi quasi rerum numquam, maxime magnam earum sit.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis voluptatibus doloribus consectetur maxime repudiandae, sapiente repellendus doloremque animi beatae tempore et tenetur? Eaque enim consequatur animi, vel modi ipsa placeat.              </p>
+            
+                <a data-value="#form4" id="bttn" onclick="toggleform(event)" class="nav-link">Appointment</a>
+              </center>
+          </div>
+                <div id="form2">
+                  <form  method="post" action="{{ url_for('doctorlog')}}">
+                    <h3>Doctor Login</h3>
+                    <hr>
+                    <div class="form-group">
+                      <label for="username">Email:</label>
+                      <input type="email" class="form-control" id="username" placeholder="Enter Email" required name="name">
+                    </div><br>
+                    <div class="form-group">
+                      <label for="password">Password:</label>
+                      <input type="password" class="form-control" id="password" placeholder="Enter password" required name="password">
+                    </div><br>
+                    <button type="submit" class="btn btn-success">Submit</button></br></br>
+                  </form>
+                  <center><p>Don't have account? <a data-value="#form3" onclick="toggleform(event)">Signup</a></p></center>
+                </div>
+              
+                  
+                  <div id="form3">
+                    <form method="post" action="{{ url_for('doctorreg')}}" >
+                      <h3>Doctor Regestration</h3>
+                      <hr>
+                      <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter username" required name="name">
+                      </div><br>
+                      <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" required name="email">
+                      </div><br>
+                      <div class="form-group">
+                        <label for="timing">Time Slots:</label>
+                        <select name="timing" id="timing" class="form-control" required>
+                          <option value="morning">Morning</option>
+                          <option value="afternoon">Afternoon</option>
+                          <option value="evening">Evening</option>
+                        </select>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="categary">Categary:</label>
+                        <select name="categary" id="categary" class="form-control" required>
+                          <option value="mild">Mild</option>
+                          <option value="moderate">Moderate</option>
+                          <option value="severe">Severe</option>
+                          <option value="critical">Critical</option>
+                        </select>
+                      </div><br>
+                      <div class="form-group">
+                        <label for="phone">Mobile No.:</label>
+                        <input type="number" class="form-control" id="phone" placeholder="Enter mobile number" required name="phone">
+                      </div><br>
+                      <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" required name="password">
+                      </div><br>
+                      <button type="submit" class="btn btn-success">Submit</button></br></br>
+                    </form>
+                    <center><p>Already have account? <a data-value="#form2" onclick="toggleform(event)">Signin</a></p></center>
+                  </div>
+                
+                  <div id="form4">
+                    <form  method="post" action="{{ url_for('patientlog')}}" >
+                      <h3>Patient Login</h3>
+                      <hr>
+                      <div class="form-group">
+                        <label for="username">Email:</label>
+                        <input type="email" class="form-control" id="username" placeholder="Enter Email" required name="name">
+                      </div><br>
+                      <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" required name="password">
+                      </div><br>
+                      <button type="submit" class="btn btn-success">Submit</button></br></br>
+                    </form>
+                    <center><p>Don't have account? <a data-value="#form5" onclick="toggleform(event)">Signup</a></p></center>
+                  </div>
+              
+                  
+                  <div  id="form5">
+                    <form method="post" action="{{ url_for('patientreg')}}">
+                      <h3>Patient Regestration</h3>
+                      <hr>
+                      <div class="form-group">
+                        <label for="username">name:</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter username" required name="name">
+                      </div><br>
+                      <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" required name="email">
+                      </div><br>
+                      <div class="form-group">
+                        <label for="phone">Mobile No.:</label>
+                        <input type="number" class="form-control" id="phone" placeholder="Enter mobile number" required name="phone">
+                      </div><br>
+                      <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" required name="password">
+                      </div><br>
+                      <button type="submit" class="btn btn-success">Submit</button></br></br>
+                    </form>
+                    <center><p>Already have account? <a data-value="#form4" onclick="toggleform(event)">Signin</a></p></center>
+                  </div>
+
+                  <div id="form6">
+                    <form  method="post" action="{{ url_for('adminlog')}}" >
+                      <h3>Admin Login</h3>
+                      <hr>
+                      <div class="form-group">
+                        <label for="username">Email:</label>
+                        <input type="email" class="form-control" id="username" placeholder="Enter Email" required name="name">
+                      </div><br>
+                      <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" required name="password">
+                      </div><br>
+                      <button type="submit" class="btn btn-success">Submit</button></br></br>
+                    </form>
+                  </div>
+
+            </div>
+        </header>
+
+        <footer>
+          <a href="https://www.facebook.com/" target="_blank"><img src="data:image/png;base64,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"></a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://www.instagram.com/" target="_blank"><img src="data:image/jpeg;base64,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"></a>
+        
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="http://127.0.0.1:5000/static/js/scripts.js"></script>
+        <script>
+            function toggleform(e) {
+            var Id =(e.target.getAttribute('data-value'))
+            let Items= ['#form1', '#form2', '#form3', '#form4', '#form5', '#form6'];
+            Items.map(function(item) {
+                if(Id === item ) {
+                    $(item).addClass("active");
+                }
+                else {
+                $(item).removeClass("active");
+                }
+            })
+        }
+        
+        </script>
+    </body>
+</html>
